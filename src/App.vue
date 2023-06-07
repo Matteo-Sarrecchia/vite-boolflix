@@ -18,7 +18,15 @@ export default {
   methods: {
     getCardsFilm() {
 
-      axios.get(store.apiURL)
+      let myUrl = store.apiURL;
+
+      if (store.searchText !== "") {
+        myUrl += store.searchText
+        console.log(myUrl)
+        console.log(store.searchText);
+      }
+
+      axios.get(myUrl)
         .then(res => {
           store.filmList = res.data.results
           console.log(res.data.results);
@@ -35,7 +43,7 @@ export default {
 </script>
 
 <template>
-  <AppSearch />
+  <AppSearch @search="getCardsFilm" />
   <AppCardFilm />
 </template>
 

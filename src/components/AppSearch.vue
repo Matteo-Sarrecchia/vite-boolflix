@@ -1,6 +1,6 @@
 <script>
 import { store } from '../store';
-import AppResult from './AppSearch.vue'
+
 export default {
     name: "AppSearch",
     data() {
@@ -14,8 +14,8 @@ export default {
 
 <template>
     <section class="search">
-        <input type="text" placeholder="Search film">
-        <button class="btn btn-primary">
+        <input v-model="store.searchText" @keyup.enter="$emit('search')" type="text" placeholder="Search film">
+        <button @click="$emit('search')" class="btn btn-primary">
             Search
         </button>
     </section>

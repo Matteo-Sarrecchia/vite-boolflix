@@ -14,10 +14,14 @@ export default {
 
 <template>
     <section class="cardFilm">
-        <div class="card" v-for="elm in store.filmList">
-            <img :src="elm.poster_path" alt="">
+        <div class="card" v-for="(elm, index) in store.filmList">
+            <!-- <img :src="elm.poster_path" alt=""> -->
+            <div>{{ elm.title }}</div>
+            <div >{{ elm.original_title }}</div>
+            <div>{{ elm.original_language }}</div>
+            <div>{{ elm.vote_average }}</div>
         </div>
-        <!-- {{ store.filmList }} -->
+
     </section>
 </template>
 
@@ -29,12 +33,20 @@ export default {
     border: 1px solid black;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 
     .card {
-        width: 300px;
-        height: 300px;
+        width: 250px;
+        height: 250px;
         border: 1px solid black;
         margin: 20px;
+        background-color: black;
+        color: white;
+        text-align: center;
+
+        div {
+            padding: 10px;
+        }
     }
 }
 </style>
