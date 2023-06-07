@@ -1,8 +1,8 @@
 <script>
 import { store } from '../store';
-import AppCardFilm from './AppCardFilm.vue'
+import AppCardSerie from './AppCardSerie.vue'
 export default {
-    name: "AppCardFilm",
+    name: "AppCardSerie",
     data() {
         return {
             store
@@ -13,17 +13,17 @@ export default {
 </script>
 
 <template>
-    <section v-if="store.filmList.length > 0" class="section-cardFilm">
-        <div class="film">
-            FILM LIST
+    <section v-if="store.serieList.length > 0" class="section-cardFilm">
+        <div class="serie">
+            SERIE LIST
         </div>
 
         <!-- contenitore cards -->
         <div class="container-cards">
-            <div class="card" v-for="(elm, index) in store.filmList">
+            <div class="card" v-for="(elm, index) in store.serieList">
                 <!-- <img :src="elm.poster_path" alt=""> -->
-                <div>{{ elm.title }}</div>
-                <div>{{ elm.original_title }}</div>
+                <div>{{ elm.name }}</div>
+                <div>{{ elm.original_name }}</div>
                 <div v-if="elm.original_language == 'en'">
                     <img src="../../public/engl.jpg" alt="">
                 </div>
@@ -52,7 +52,7 @@ export default {
 <style lang="scss" scoped>
 @use "../styles/general.scss";
 
-.film {
+.serie {
     width: 90%;
     margin: 20px auto;
     text-align: center;
@@ -60,7 +60,7 @@ export default {
     color: white;
     border: 1px solid white;
     border-radius: 20px;
-    font-size: 20px;
+    font-size: 25px;
 }
 
 .container-cards {
