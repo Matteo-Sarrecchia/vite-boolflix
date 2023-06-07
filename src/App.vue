@@ -24,6 +24,7 @@ export default {
         myUrl += store.searchText
         console.log(myUrl)
         console.log(store.searchText);
+        console.log(store.language);
       }
 
       axios.get(myUrl)
