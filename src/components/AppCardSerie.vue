@@ -20,28 +20,37 @@ export default {
 
         <!-- contenitore cards -->
         <div class="container-cards">
+            <!-- v-for per generare le card -->
+
             <div class="card" v-for="(elm, index) in store.serieList">
-                <!-- <img :src="elm.poster_path" alt=""> -->
-                <div>{{ elm.name }}</div>
-                <div>{{ elm.original_name }}</div>
-                <div v-if="elm.original_language == 'en'">
-                    <img src="../../public/engl.jpg" alt="">
-                </div>
-                <div v-else-if="elm.original_language == 'it'">
-                    <img src="../../public/ita.svg" alt="">
-                </div>
-                <div v-else-if="elm.original_language == 'es'">
-                    <img src="../../public/spain.jpg" alt="">
-                </div>
-                <div v-else-if="elm.original_language == 'fr'">
-                    <img src="../../public/france.png" alt="">
-                </div>
-                <div v-else>
-                    {{ elm.original_language }}
-                </div>
-                <div>{{ elm.vote_average }}</div>
-                <div class="text">
-                    {{ elm.overview }}
+                <img class="fotoCopertina" :src="store.apiImgUrl + elm.poster_path" alt="">
+
+                <!-- testo card -->
+                <div class="cardText">
+                    <div>{{ elm.name }}</div>
+                    <div>{{ elm.original_name }}</div>
+                    <div v-if="elm.original_language == 'en'">
+                        <img src="../../public/engl.jpg" alt="">
+                    </div>
+                    <div v-else-if="elm.original_language == 'it'">
+                        <img src="../../public/ita.svg" alt="">
+                    </div>
+                    <div v-else-if="elm.original_language == 'es'">
+                        <img src="../../public/spain.jpg" alt="">
+                    </div>
+                    <div v-else-if="elm.original_language == 'fr'">
+                        <img src="../../public/france.png" alt="">
+                    </div>
+                    <div v-else>
+                        {{ elm.original_language }}
+                    </div>
+                    <div>{{ elm.vote_average }}</div>
+
+                    <!-- trama -->
+                    <div class="description">
+                        {{ elm.overview }}
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -70,8 +79,8 @@ export default {
     justify-content: center;
 
     .card {
-        width: 250px;
-        height: 300px;
+        width: 300px;
+        min-height: 350px;
         border: 1px solid black;
         margin: 20px;
         background-color: black;
@@ -80,21 +89,29 @@ export default {
         font-size: 14px;
         border-radius: 20px;
 
-        div {
-            padding: 5px 10px;
-
-            img {
-                width: 35px;
-            }
+        .fotoCopertina {
+            border-radius: 20px;
         }
 
-        .text {
-            border: 1px solid white;
-            padding: 10px;
-            margin: 10px;
-            border-radius: 20px;
-            overflow: auto;
-            height: 100%;
+        .cardText {
+            // display: none;
+
+            div {
+                padding: 5px 10px;
+
+                img {
+                    width: 35px;
+                }
+            }
+
+            .description {
+                border: 1px solid white;
+                padding: 10px;
+                margin: 10px;
+                border-radius: 20px;
+                overflow: auto;
+                height: 200px;
+            }
         }
     }
 }
