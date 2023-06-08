@@ -59,11 +59,9 @@ export default {
         })
     },
 
-
   },
   created() {
     this.getCards();
-    this.numberExcess()
   }
 }
 </script>

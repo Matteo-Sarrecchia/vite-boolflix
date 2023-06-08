@@ -7,6 +7,12 @@ export default {
         return {
             store
         }
+    },
+    computed: {
+        numberExcess(n) {
+            let star = Math.ceil(n / 10 * 5)
+            return star
+        }
     }
 }
 
@@ -45,7 +51,7 @@ export default {
                     <div v-else>
                         {{ elm.original_language }}
                     </div>
-                    <div>{{ elm.vote_average }}</div>
+                    <div>{{ numberExcess(elm.vote_average) }}</div>
 
                     <!-- trama -->
                     <div class="description">
