@@ -7,6 +7,12 @@ export default {
         return {
             store
         }
+    },
+    methods: {
+        numberExcess(n) {
+            const star = Math.ceil(n / 2)
+            return star
+        }
     }
 }
 
@@ -44,7 +50,9 @@ export default {
                     <div v-else>
                         {{ elm.original_language }}
                     </div>
-                    <div>{{ elm.vote_average }}</div>
+                    <i v-for="count in 5" class="fa-solid fa-star"
+                        :class="numberExcess(elm.vote_average) >= count ? 'active' : ''">
+                    </i>
 
                     <!-- trama -->
                     <div class="description">
@@ -60,6 +68,10 @@ export default {
 
 <style lang="scss" scoped>
 @use "../styles/general.scss";
+
+.active {
+    color: orange;
+}
 
 .serie {
     width: 90%;
