@@ -19,10 +19,14 @@ export default {
 </script>
 
 <template>
+    <div id="no-result" v-if="store.filmList.length === 0">
+        no results found...
+    </div>
     <section v-if="store.filmList.length > 0" class="section-cardFilm">
         <div class="film">
             FILM LIST
         </div>
+
 
         <!-- contenitore cards -->
         <div class="container-cards">
@@ -30,7 +34,7 @@ export default {
             <!-- v-for per generare le card -->
             <div class="card front" v-for="(elm, index) in store.filmList">
                 <img class="fotoCopertina" :src="store.apiImgUrl + elm.
-                    poster_path" alt="">
+                    poster_path" alt="...coming soon">
 
                 <!-- testo card -->
                 <div class="cardText retro">
@@ -84,6 +88,12 @@ export default {
     font-size: 20px;
 }
 
+#no-result {
+    text-align: center;
+    color: white;
+    font-size: 50px;
+}
+
 .container-cards {
     min-height: 50px;
     display: flex;
@@ -131,6 +141,7 @@ export default {
         .fotoCopertina {
             border-radius: 20px;
             height: 100%;
+            font-size: 30px;
         }
 
         .cardText {

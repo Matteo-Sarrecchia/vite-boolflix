@@ -20,36 +20,36 @@ export default {
 
 <template>
     <section v-if="store.serieList.length > 0" class="section-cardFilm">
-        <div class="serie">
-            SERIE LIST
-        </div>
+    <div class="serie">
+        SERIE LIST
+    </div>
 
-        <!-- contenitore cards -->
-        <div class="container-cards">
-            <!-- v-for per generare le card -->
+    <!-- contenitore cards -->
+    <div class="container-cards">
+        <!-- v-for per generare le card -->
 
-            <div class="card front" v-for="(elm, index) in store.serieList">
-                <img class="fotoCopertina" :src="store.apiImgUrl + elm.poster_path" alt="">
+        <div class="card front" v-for="(elm, index) in store.serieList">
+            <img class="fotoCopertina" :src="store.apiImgUrl + elm.poster_path" alt="">
 
                 <!-- testo card -->
                 <div class="cardText retro">
                     <div id="title">{{ elm.name }}</div>
                     <div v-if="elm.title !== elm.original_title">{{ elm.original_name }}</div>
-                    <div v-if="elm.original_language == 'en'">
-                        <img src="../../public/engl.jpg" alt="">
+                    <div>
+                        <img :src="'../../public/' + elm.original_language" alt="">
                     </div>
-                    <div v-else-if="elm.original_language == 'it'">
-                        <img src="../../public/ita.svg" alt="">
-                    </div>
-                    <div v-else-if="elm.original_language == 'es'">
-                        <img src="../../public/spain.jpg" alt="">
-                    </div>
-                    <div v-else-if="elm.original_language == 'fr'">
-                        <img src="../../public/france.png" alt="">
-                    </div>
-                    <div v-else>
-                        {{ elm.original_language }}
-                    </div>
+                    <!-- <div v-else-if="elm.original_language == 'it'">
+                                        <img src="../../public/ita.svg" alt="">
+                                    </div>
+                                    <div v-else-if="elm.original_language == 'es'">
+                                        <img src="../../public/spain.jpg" alt="">
+                                    </div>
+                                    <div v-else-if="elm.original_language == 'fr'">
+                                        <img src="../../public/france.png" alt="">
+                                    </div>
+                                    <div v-else>
+                                        {{ elm.original_language }}
+                                    </div> -->
                     <i v-for="count in 5" class="fa-solid fa-star"
                         :class="numberExcess(elm.vote_average) >= count ? 'active' : ''">
                     </i>
