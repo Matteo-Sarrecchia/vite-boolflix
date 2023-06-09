@@ -14,10 +14,17 @@ export default {
 
 <template>
     <section class="search">
-        <input v-model="store.searchText" @keyup.enter="$emit('search')" type="text" placeholder="Search film">
-        <button @click="$emit('search')" class="btn btn-primary">
-            Search
-        </button>
+        <!-- logo -->
+        <div id="logo"> BOOLFLIX</div>
+
+        <!-- search input -->
+        <div id="search-input">
+            <input v-model="store.searchText" @keyup.enter="$emit('search')" type="text" placeholder="Search film">
+            <button @click="$emit('search')" class="btn btn-primary">
+                Search
+            </button>
+
+        </div>
     </section>
 </template>
 
@@ -25,14 +32,34 @@ export default {
 @use "../styles/general.scss";
 
 .search {
-    background-color: #D48F38;
-    border: 1px solid black;
+    background-color: #000000;
     min-height: 50px;
-    padding: 20px;
+    padding: 10px;
     display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-    button {
-        margin-left: 20px;
+    div {
+        width: 30%;
     }
+
+    #logo {
+        color: red;
+        font-size: 30px;
+        border: 1px solid red;
+        width: 15%;
+        text-align: center;
+    }
+
+    #search-input {
+        display: flex;
+        align-items: center;
+        justify-content: end;
+
+        input {
+            margin-right: 30px;
+        }
+    }
+
 }
 </style>

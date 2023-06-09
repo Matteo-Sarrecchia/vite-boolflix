@@ -9,5 +9,4 @@ export const store = reactive({
     serieList: [],
 
     apiImgUrl: "https://image.tmdb.org/t/p/w300/",
-    numberExcess: 0
 })

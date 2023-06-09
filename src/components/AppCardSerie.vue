@@ -28,13 +28,13 @@ export default {
         <div class="container-cards">
             <!-- v-for per generare le card -->
 
-            <div class="card" v-for="(elm, index) in store.serieList">
+            <div class="card front" v-for="(elm, index) in store.serieList">
                 <img class="fotoCopertina" :src="store.apiImgUrl + elm.poster_path" alt="">
 
                 <!-- testo card -->
-                <div class="cardText">
-                    <div>{{ elm.name }}</div>
-                    <div>{{ elm.original_name }}</div>
+                <div class="cardText retro">
+                    <div id="title">{{ elm.name }}</div>
+                    <div v-if="elm.title !== elm.original_title">{{ elm.original_name }}</div>
                     <div v-if="elm.original_language == 'en'">
                         <img src="../../public/engl.jpg" alt="">
                     </div>
@@ -78,8 +78,8 @@ export default {
     margin: 20px auto;
     text-align: center;
     background-color: black;
-    color: white;
-    border: 1px solid white;
+    color: rgb(255, 0, 0);
+    border: 1px solid rgb(255, 0, 0);
     border-radius: 20px;
     font-size: 25px;
 }
@@ -89,6 +89,7 @@ export default {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    background-color: transparent;
 
     .card {
         width: 300px;
@@ -100,13 +101,42 @@ export default {
         text-align: center;
         font-size: 14px;
         border-radius: 20px;
+        position: relative;
+        transition: transform 0.6s;
+        transform-style: preserve-3d;
 
-        .fotoCopertina {
+        &:hover {
+            transform: rotateY(180deg);
+        }
+
+        .front,
+        .retro {
+            position: absolute;
+            top: 0;
+            left: 0;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+
+        .retro {
+            transform: rotateY(180deg);
+            background-color: black;
+            width: 100%;
+            height: 100%;
             border-radius: 20px;
         }
 
+
+        .fotoCopertina {
+            border-radius: 20px;
+            height: 100%;
+        }
+
         .cardText {
-            // display: none;
+
+            #title {
+                margin-top: 20px;
+            }
 
             div {
                 padding: 5px 10px;
@@ -117,12 +147,11 @@ export default {
             }
 
             .description {
-                border: 1px solid white;
                 padding: 10px;
                 margin: 10px;
                 border-radius: 20px;
                 overflow: auto;
-                height: 200px;
+                max-height: 300px;
             }
         }
     }
